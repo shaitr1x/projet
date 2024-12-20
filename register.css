@@ -1,0 +1,106 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f6;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #0066c0;
+}
+
+a:hover {
+    color: #004080;
+}
+
+/* Banner Styles */
+.banner {
+    background-color: #232f3e;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+/* Form Container */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container label {
+    font-size: 14px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.container input,
+.container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.container button {
+    background-color: #ff9900;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container button:hover {
+    background-color: #e68a00;
+}
+
+/* Paragraph and Link Styles */
+.container p {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+    color: #555;
+}
+
+.container p a {
+    color: #0066c0;
+    text-decoration: underline;
+}
+
+.container p a:hover {
+    color: #004080;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        margin-top: 20px;
+    }
+}
