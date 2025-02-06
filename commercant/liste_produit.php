@@ -2,18 +2,17 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include('db_connect.php');
 
-// Vérification du rôle
-if (!isset($_SESSION['id_utilisateur']) || $_SESSION['role'] !== 'commercant') {
+include('db_connect.php'); // de connexion à la DB
+
+if (!isset($_SESSION['id_utilisateur']) || $_SESSION['role'] !== 'administrateur') {
     echo "Accès interdit.";
     exit;
 }
 
 $id_commercant = $_SESSION['id_utilisateur'];
-$query = "SELECT * FROM produits WHERE id_commercant = ?";
+$query = "SELECT * FROM produits";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("i", $id_commercant);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
@@ -34,31 +33,31 @@ $result = $stmt->get_result();
     </header>
     
     <main class="main-content">
-        <div class="actions">
-            <a href="add_product.php" class="btn">Ajouter un nouveau produit</a>
-        </div>
-
         <h2>Vos Produits</h2>
         <div class="table-container">
             <table class="products-table">
                 <thead>
                     <tr>
+                        <th>id_commercant</th>
                         <th>Nom</th>
                         <th>Description</th>
                         <th>Prix</th>
                         <th>Quantité</th>
                         <th>Image</th>
+                        <th>categorie</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <tr>
+                            <td><?php echo htmlspecialchars($row['id_commercant']); ?></td>
                             <td><?php echo htmlspecialchars($row['nom']); ?></td>
                             <td><?php echo htmlspecialchars($row['description']); ?></td>
                             <td><?php echo htmlspecialchars($row['prix']); ?>€</td>
                             <td><?php echo htmlspecialchars($row['quantite_stock']); ?></td>
                             <td><img src="uploads/<?php echo htmlspecialchars($row['image']); ?>"></td>
+                             <td><?php echo htmlspecialchars($row['categorie']); ?></td>
                             <td>
                                 <a href="update_stock.php?id=<?php echo $row['id_produit']; ?>" class="btn">Modifier</a>
                                 <a href="delete_product.php?id=<?php echo $row['id_produit']; ?>" class="btn">Supprimer</a>

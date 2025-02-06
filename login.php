@@ -42,6 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: dashboard_commercant.php");
                 exit;
             }
+            elseif ($role === "administrateur")
+            {
+                header("location: dashboard_administrateur.php");
+                exit;
+            }
         } else {
             echo "Mot de passe incorrect.";
         }

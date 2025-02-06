@@ -1,10 +1,12 @@
 <?php
+session_start();
 // Inclure la connexion à la base de données
 include('db_connect.php'); // Assurez-vous d'avoir votre fichier de connexion à la DB
 
 // Vérifier si le formulaire a été soumis
 if (isset($_POST['submit'])) {
     // Récupérer les valeurs du formulaire
+    $id=$_SESSION["id_utilisateur"];
     $nom = $_POST['nom'];
     $description = $_POST['description'];
     $prix = $_POST['prix'];
@@ -21,14 +23,15 @@ if (isset($_POST['submit'])) {
     }
 
     // Préparer la requête SQL pour insérer le produit dans la base de données
-    $query = "INSERT INTO produits (nom, description, prix, quantite_stock, categorie, image) 
-              VALUES (?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO produits (id_commercant,nom, description, prix, quantite_stock, categorie, image) 
+              VALUES (?,?,?,?,?,?,?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssdiss", $nom, $description, $prix, $quantite_stock, $categorie, $image);
-
+    $stmt->bind_param("issdiss", $id,$nom, $description, $prix, $quantite_stock, $categorie, $image);
+    
     // Exécuter la requête
     if ($stmt->execute()) {
         echo "Le produit a été ajouté avec succès.";
+        header("location:dashboard.php");
     } else {
         echo "Erreur lors de l'ajout du produit.";
     }
@@ -53,6 +56,7 @@ if (isset($_POST['submit'])) {
         <div class="logo">
             <h1>Ajouter un Produit</h1>
         </div>
+        <a href="dashboard.php">afficher_produit</a>
     </header>
 
     <!-- Formulaire -->
@@ -88,10 +92,9 @@ if (isset($_POST['submit'])) {
                 <input type="file" id="image" name="image" required>
             </div>
 
-            <button type="submit" class="submit-btn">Ajouter</button>
+            <button type="submit" class="submit-btn" name="submit">Ajouter</button>
         </form>
     </section>
-
     <footer>
         <p>&copy; 2024 Mon E-commerce</p>
     </footer>

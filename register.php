@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <option value="ngaoundere">Ngaoundéré</option>
             </select>
             <label for="numero">Numéro de téléphone :</label>
-            <input type="text" id="numero" name="numero" placeholder="Votre numéro de téléphone" required>
+            <input type="text" id="numero" name="numero" placeholder="6 xx-xx-xx-xxx" required pattern="[6][0-9]{8}" title="votre numeros doit commencer par un 6 suivi de 8 chiffres">
             <button type="submit">Créer un compte</button>
             <p>Vous avez déjà un compte ? <a href="login.php">Connectez-vous</a></p>
         </form>  
