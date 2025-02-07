@@ -12,7 +12,7 @@
     echo"<h1>bonjour $_SESSION[nom]</h1>";
     ?>
     <p>qu'allez vous faire aujourd'hui!!!</p>
-    <a href="add_product.php">ajouter_produit</a><br>
-    <a href="dashboard.php">afficher_produit</a>
+    <a href="dashboard.php">afficher_produit</a><br>
+    <a href="add_product.php">ajouter_produit</a>
 </body>
 </html>

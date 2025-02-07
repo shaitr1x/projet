@@ -1,6 +1,6 @@
 <?php
 // Inclure la connexion à la base de données
-include('db_connect.php'); // Assurez-vous d'avoir votre fichier de connexion à la DB
+include('../db_connect.php'); // Assurez-vous d'avoir votre fichier de connexion à la DB
 
 // Vérifier si l'ID de l'utilisateur est passé en paramètre
 if (isset($_GET['id'])) {

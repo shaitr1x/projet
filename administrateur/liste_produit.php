@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-include('db_connect.php'); // de connexion à la DB
+include('../db_connect.php'); // de connexion à la DB
 
 if (!isset($_SESSION['id_utilisateur']) || $_SESSION['role'] !== 'administrateur') {
     echo "Accès interdit.";

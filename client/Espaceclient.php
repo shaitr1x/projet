@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon E-commerce</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body>
     <!-- Header -->
@@ -82,7 +82,7 @@
 
     <!-- Liste des produits -->
     <section class="products" id="product-list">
-        <h3>Produits</h3>
+       <!-- <h3>Produits</h3>
         <div class="product-item">
             <img src="OIP.jpg" alt="Produit">
             <h3>Produit 1</h3>
@@ -95,7 +95,52 @@
             <p>Prix : 29.99€</p>
             <button class="add-to-cart-btn">Ajouter au panier</button>
         </div>
+        -->
         <!-- Plus de produits peuvent être ajoutés ici -->
+        <h3>Produits</h3>
+        <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+include('../db_connect.php'); // de connexion à la DB
+
+if (!isset($_SESSION['id_utilisateur']) || $_SESSION['role'] !== 'client') {
+    echo "Accès interdit.";
+    exit;
+}
+
+$id_commercant = $_SESSION['id_utilisateur'];
+$query = "SELECT nom,description,prix,quantite_stock,image FROM produits";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$result = $stmt->get_result();
+?>
+ghjklmlkjhgfdfghjkl
+<div class="table-container">
+            <table class="products-table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['nom']); ?></td>
+                            <td><?php echo htmlspecialchars($row['description']); ?></td>
+                            <td><?php echo htmlspecialchars($row['prix']); ?>€</td>
+                            <td><?php echo htmlspecialchars($row['quantite_stock']); ?></td>
+                            <td><img src="uploads/<?php echo htmlspecialchars($row['image']); ?>"></td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+
     </section>
 
     <!-- Panier d'achat -->
