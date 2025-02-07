@@ -2,7 +2,7 @@
 session_start();
 
 // Inclure la connexion à la base de données
-include('db_connect.php');
+include('../db_connect.php');
 
 // Si le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

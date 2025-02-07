@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include('db_connect.php');
+include('../db_connect.php');
 
 // Vérification du rôle
 if (!isset($_SESSION['id_utilisateur']) || $_SESSION['role'] !== 'commercant') {

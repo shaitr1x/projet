@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Inclure la connexion à la base de données
-include('db_connect.php'); // Assurez-vous d'avoir votre fichier de connexion à la DB
+include('../db_connect.php'); // Assurez-vous d'avoir votre fichier de connexion à la DB
 
 // Vérifier si le formulaire a été soumis
 if (isset($_POST['submit'])) {
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
 
     // Déplacer l'image téléchargée vers le dossier souhaité (par exemple "uploads/")
     if ($image) {
-        $target_dir = "uploads/";
+        $target_dir = "../uploads/";
         $target_file = $target_dir . basename($image);
         move_uploaded_file($image_tmp, $target_file);
     }

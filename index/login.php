@@ -36,15 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION["id_utilisateur"]=$id;
 
             if ($role === "client") {
-                header("Location: Espaceclient.php");
+                header("Location:../client/Espaceclient.php");
                 exit;
             } elseif ($role === "commercant") {
-                header("Location: dashboard_commercant.php");
+                header("Location:../commercant/dashboard_commercant.php");
                 exit;
             }
             elseif ($role === "administrateur")
             {
-                header("location: dashboard_administrateur.php");
+                header("location: ../administrateur/dashboard_administrateur.php");
                 exit;
             }
         } else {

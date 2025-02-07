@@ -18,8 +18,8 @@
                 <li><a href="product.php">Produits</a></li>
                 <li><a href="categories.php">Catégories</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="login.php">Se connecter</a></li>
-                <li><a href="register.php">S'inscrire</a></li>
+                <li><a href="index/login.php">Se connecter</a></li>
+                <li><a href="index/register.php">S'inscrire</a></li>
             </ul>
             <!-- Menu burger pour mobile -->
             <div class="burger-menu" id="burger-menu">
